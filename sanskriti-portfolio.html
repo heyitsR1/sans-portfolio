@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanskriti Acharya | QA & Data Science</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dusty-rose': '#E8B4B8',
+                        'blush-cream': '#FDF6F0',
+                        'deep-mauve': '#9B6B7D',
+                        'charcoal': '#4A4A4A',
+                        'soft-pink': '#FCE7F3',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FDF6F0;
+            color: #4A4A4A;
+            overflow-x: hidden;
+        }
+
+        /* Petal Animation */
+        .petal {
+            position: fixed;
+            top: -10%;
+            z-index: 0;
+            pointer-events: none;
+            animation-name: fall, sway;
+            animation-timing-function: linear, ease-in-out;
+            animation-iteration-count: infinite, infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes fall {
+            0% { top: -10%; }
+            100% { top: 110%; }
+        }
+
+        @keyframes sway {
+            0% { transform: translateX(0px) rotate(0deg); }
+            50% { transform: translateX(40px) rotate(45deg); }
+            100% { transform: translateX(0px) rotate(90deg); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FDF6F0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E8B4B8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9B6B7D;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(155, 107, 125, 0.15);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased relative">
+
+    <!-- Falling Petals Container -->
+    <div id="petals-container"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-serif text-2xl font-bold text-deep-mauve tracking-tight">Sanskriti.</a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-charcoal/80">
+                <a href="#about" class="hover:text-deep-mauve transition-colors">About</a>
+                <a href="#philosophy" class="hover:text-deep-mauve transition-colors">Philosophy</a>
+                <a href="#work" class="hover:text-deep-mauve transition-colors">Work</a>
+                <a href="#contact" class="hover:text-deep-mauve transition-colors">Contact</a>
+            </div>
+            <button class="md:hidden text-deep-mauve text-xl" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-blush-cream/95 backdrop-blur-md border-b border-dusty-rose/20 p-4 flex flex-col space-y-4 text-center shadow-lg">
+            <a href="#about" class="block text-charcoal hover:text-deep-mauve">About</a>
+            <a href="#philosophy" class="block text-charcoal hover:text-deep-mauve">Philosophy</a>
+            <a href="#work" class="block text-charcoal hover:text-deep-mauve">Work</a>
+            <a href="#contact" class="block text-charcoal hover:text-deep-mauve">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="about" class="min-h-screen flex items-center justify-center pt-20 px-6 relative z-10">
+        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1 space-y-6 text-center md:text-left">
+                <div class="inline-block px-4 py-1.5 rounded-full bg-white/60 border border-dusty-rose/30 text-deep-mauve text-xs font-semibold tracking-wider uppercase mb-2">
+                    QA Intern & Data Science Student
+                </div>
+                <h1 class="font-serif text-5xl md:text-7xl font-bold text-charcoal leading-tight">
+                    I find the <span class="text-transparent bg-clip-text bg-gradient-to-r from-deep-mauve to-dusty-rose">bugs</span> so users don't have to.
+                </h1>
+                <p class="text-lg text-charcoal/70 leading-relaxed max-w-lg mx-auto md:mx-0">
+                    Hi, I'm <strong>Sanskriti Acharya</strong>. I'm a 3rd year IT student with a passion for clean data, reliable systems, and the tiny details that make software great.
+                </p>
+                <div class="flex flex-wrap gap-4 justify-center md:justify-start pt-4">
+                    <a href="#work" class="px-8 py-3 bg-deep-mauve text-white rounded-full font-medium hover:bg-opacity-90 transition-all shadow-lg shadow-deep-mauve/20 hover:shadow-deep-mauve/40">
+                        View My Work
+                    </a>
+                    <a href="https://github.com/SanskritiAcharya" target="_blank" class="px-8 py-3 bg-white text-deep-mauve border border-deep-mauve/20 rounded-full font-medium hover:bg-dusty-rose/10 transition-all">
+                        <i class="fab fa-github mr-2"></i> GitHub
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Profile Image Area -->
+            <div class="order-1 md:order-2 flex justify-center relative">
+                <div class="relative w-64 h-64 md:w-80 md:h-80">
+                    <!-- Decorative circles behind -->
+                    <div class="absolute inset-0 bg-dusty-rose/20 rounded-full blur-3xl transform translate-x-4 translate-y-4"></div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-deep-mauve/10 to-dusty-rose/10 rounded-full animate-pulse"></div>
+                    
+                    <!-- Image Container -->
+                    <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-white shadow-2xl">
+                        <!-- 
+                           NOTE: Replace the src below with the actual path to her image.
+                           Example: src="/mnt/kimi/upload/image.png" 
+                           Currently using a placeholder that fits the aesthetic.
+                        -->
+                        <img src="/image.png" 
+                             alt="Sanskriti Acharya" 
+                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    </div>
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-4 -right-4 bg-white p-4 rounded-2xl shadow-xl border border-dusty-rose/20 animate-bounce" style="animation-duration: 3s;">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 font-semibold uppercase">Status</p>
+                                <p class="text-sm font-bold text-charcoal">Open to Work</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section id="philosophy" class="py-20 px-6 relative z-10">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-charcoal mb-4">How I Think</h2>
+                <p class="text-charcoal/60 max-w-2xl mx-auto">It's not just about the tools. It's about the approach.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card p-8 rounded-3xl hover-lift group cursor-default">
+                    <div class="w-14 h-14 bg-dusty-rose/20 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        🔍
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-charcoal mb-3">The Validator</h3>
+                    <p class="text-charcoal/70 leading-relaxed">
+                        I don't just test code; I test assumptions. I love diving deep into requirements to find the edge cases others miss.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card p-8 rounded-3xl hover-lift group cursor-default">
+                    <div class="w-14 h-14 bg-deep-mauve/10 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        📊
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-charcoal mb-3">The Pattern-Seeker</h3>
+                    <p class="text-charcoal/70 leading-relaxed">
+                        Data tells stories. Whether it's cleaning messy datasets or analyzing user behavior, I find the signal in the noise.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card p-8 rounded-3xl hover-lift group cursor-default">
+                    <div class="w-14 h-14 bg-rose-100 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        🛠️
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-charcoal mb-3">The Builder</h3>
+                    <p class="text-charcoal/70 leading-relaxed">
+                        From ReLoop to web scraping tools, I build things that work. Reliable, tested, and user-focused applications.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Currently Section -->
+    <section class="py-12 px-6 relative z-10">
+        <div class="max-w-4xl mx-auto bg-white/50 border border-dusty-rose/20 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div>
+                <h3 class="font-serif text-3xl font-bold text-charcoal mb-2">Currently Blooming 🌸</h3>
+                <p class="text-charcoal/60">A quick snapshot of where I'm at right now.</p>
+            </div>
+            <div class="flex flex-col gap-4 w-full md:w-auto">
+                <div class="flex items-center gap-4 bg-white px-6 py-3 rounded-xl shadow-sm border border-dusty-rose/10">
+                    <span class="text-2xl">🌱</span>
+                    <div>
+                        <p class="text-xs text-gray-500 uppercase font-bold">Learning</p>
+                        <p class="font-medium text-charcoal">Advanced SQL & Test Automation</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 bg-white px-6 py-3 rounded-xl shadow-sm border border-dusty-rose/10">
+                    <span class="text-2xl">💼</span>
+                    <div>
+                        <p class="text-xs text-gray-500 uppercase font-bold">Doing</p>
+                        <p class="font-medium text-charcoal">QA Internship at DigitalIn</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section id="work" class="py-20 px-6 relative z-10 bg-white/30">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+                <div>
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-charcoal mb-4">Featured Work</h2>
+                    <p class="text-charcoal/60 max-w-xl">A selection of projects where I got my hands dirty with data, code, and quality assurance.</p>
+                </div>
+                <a href="https://github.com/SanskritiAcharya" target="_blank" class="text-deep-mauve font-medium hover:underline flex items-center gap-2">
+                    View all on GitHub <i class="fas fa-arrow-right text-sm"></i>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Project 1 -->
+                <article class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-dusty-rose/10">
+                    <div class="h-48 bg-gradient-to-br from-green-50 to-emerald-100 flex items-center justify-center relative overflow-hidden">
+                        <i class="fas fa-recycle text-6xl text-emerald-300/50 group-hover:scale-110 transition-transform duration-500"></i>
+                        <div class="absolute top-4 right-4 bg-white/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-emerald-700">
+                            QA & Dev
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-2xl font-bold text-charcoal mb-2 group-hover:text-deep-mauve transition-colors">ReLoop</h3>
+                        <p class="text-sm text-gray-500 mb-4">Waste Management Application</p>
+                        <p class="text-charcoal/70 mb-6 line-clamp-3">
+                            Analyzed application workflows to ensure correct behavior. Validated REST API responses against expected data contracts and checked database integrity for operational records.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">API Testing</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">Data Validation</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">TypeScript</span>
+                        </div>
+                        <a href="https://github.com/Kriii1ii/ReLoop" target="_blank" class="inline-flex items-center text-deep-mauve font-medium hover:gap-2 transition-all">
+                            View Project <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-dusty-rose/10">
+                    <div class="h-48 bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center relative overflow-hidden">
+                        <i class="fas fa-shopping-cart text-6xl text-indigo-300/50 group-hover:scale-110 transition-transform duration-500"></i>
+                        <div class="absolute top-4 right-4 bg-white/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-indigo-700">
+                            Data Analysis
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-2xl font-bold text-charcoal mb-2 group-hover:text-deep-mauve transition-colors">E-commerce Analysis</h3>
+                        <p class="text-sm text-gray-500 mb-4">Data Cleaning & Visualization</p>
+                        <p class="text-charcoal/70 mb-6 line-clamp-3">
+                            Worked with large datasets to verify correctness of prediction outputs. Validated data preprocessing steps to ensure accurate inputs for the model.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">Python</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">Pandas</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">Data Verification</span>
+                        </div>
+                        <a href="https://github.com/SanskritiAcharya/ecommerce-analysis" target="_blank" class="inline-flex items-center text-deep-mauve font-medium hover:gap-2 transition-all">
+                            View Project <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-dusty-rose/10">
+                    <div class="h-48 bg-gradient-to-br from-purple-50 to-pink-100 flex items-center justify-center relative overflow-hidden">
+                        <i class="fas fa-spider text-6xl text-purple-300/50 group-hover:scale-110 transition-transform duration-500"></i>
+                        <div class="absolute top-4 right-4 bg-white/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-purple-700">
+                            QA Automation
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-2xl font-bold text-charcoal mb-2 group-hover:text-deep-mauve transition-colors">Web Scraped Data QA</h3>
+                        <p class="text-sm text-gray-500 mb-4">Validation Pipeline</p>
+                        <p class="text-charcoal/70 mb-6 line-clamp-3">
+                            Built a pipeline to validate the integrity of scraped data. Automated checks for consistency, completeness, and accuracy across different data sources.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">Python</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">BeautifulSoup</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">Automation</span>
+                        </div>
+                        <a href="https://github.com/SanskritiAcharya/web-scraped-data-qa" target="_blank" class="inline-flex items-center text-deep-mauve font-medium hover:gap-2 transition-all">
+                            View Project <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 relative z-10">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-charcoal mb-6">Let's Talk</h2>
+            <p class="text-lg text-charcoal/70 mb-10">
+                Have a project that needs careful eyes? Or just want to chat about data quality, QA processes, or the best momos in Kathmandu?
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+                <a href="mailto:sanskriti.acharyaaa27@gmail.com" class="px-8 py-4 bg-deep-mauve text-white rounded-full font-medium hover:bg-opacity-90 transition-all shadow-lg shadow-deep-mauve/20 flex items-center justify-center gap-3">
+                    <i class="fas fa-envelope"></i> Send an Email
+                </a>
+                <a href="https://www.linkedin.com/in/sanskriti-acharya-480721276/" target="_blank" class="px-8 py-4 bg-white text-deep-mauve border border-deep-mauve/20 rounded-full font-medium hover:bg-dusty-rose/10 transition-all flex items-center justify-center gap-3">
+                    <i class="fab fa-linkedin"></i> Connect on LinkedIn
+                </a>
+            </div>
+
+            <div class="flex justify-center gap-6 text-2xl text-charcoal/40">
+                <a href="https://github.com/SanskritiAcharya" target="_blank" class="hover:text-deep-mauve transition-colors"><i class="fab fa-github"></i></a>
+                <a href="#" class="hover:text-deep-mauve transition-colors"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-deep-mauve transition-colors"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center text-charcoal/40 text-sm relative z-10 border-t border-dusty-rose/10">
+        <p>&copy; 2026 Sanskriti Acharya. Crafted with 💗 & ☕</p>
+    </footer>
+
+    <script>
+        // Generate Petals
+        const petalsContainer = document.getElementById('petals-container');
+        const petalCount = 15; // Number of petals
+
+        for (let i = 0; i < petalCount; i++) {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            
+            // Randomize petal appearance
+            const size = Math.random() * 20 + 10; // 10px to 30px
+            const left = Math.random() * 100; // 0% to 100%
+            const duration = Math.random() * 10 + 10; // 10s to 20s
+            const delay = Math.random() * 10; // 0s to 10s
+            
+            petal.style.width = `${size}px`;
+            petal.style.height = `${size}px`;
+            petal.style.left = `${left}%`;
+            petal.style.animationDuration = `${duration}s, 3s`; // fall duration, sway duration
+            petal.style.animationDelay = `${delay}s, 0s`;
+            
+            // SVG Petal
+            petal.innerHTML = `
+                <svg viewBox="0 0 24 24" fill="#E8B4B8" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill-opacity="0.6"/>
+                </svg>
+            `;
+            
+            petalsContainer.appendChild(petal);
+        }
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white/80', 'backdrop-blur-md', 'shadow-sm');
+            } else {
+                navbar.classList.remove('bg-white/80', 'backdrop-blur-md', 'shadow-sm');
+            }
+        });
+    </script>
+</body>
+</html>
